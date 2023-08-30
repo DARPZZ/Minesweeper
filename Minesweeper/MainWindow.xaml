@@ -1,0 +1,24 @@
+﻿<Window x:Name="win" x:Class="Mineryder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mineryder"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="500">
+    <Grid x:Name="GamerGrid" Margin="-1,0,1,0">
+        <Button Content="Start" HorizontalAlignment="Center" Margin="0,524,0,0" VerticalAlignment="Top" Height="30" Width="70" Click="StartgameButton"/>
+        <TextBox x:Name="Tid" HorizontalAlignment="Left" Margin="295,522,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Width="200" Height="34" IsReadOnly="True" FontSize="25" FontWeight="ExtraBold" FontStretch="Medium" FontStyle="Italic" FontFamily="Bahnschrift SemiBold" HorizontalContentAlignment="Center"  />
+        <Label Content="TID: " HorizontalAlignment="Left" Margin="295,515,0,0" VerticalAlignment="Top" Height="48" Width="60" FontSize="22" FontWeight="ExtraBold" RenderTransformOrigin="0.1,0.542"/>
+
+
+
+    </Grid>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="DarkGray"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+
+    </Window.Resources>
+</Window>
