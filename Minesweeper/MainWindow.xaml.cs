@@ -11,6 +11,10 @@ namespace Mineryder
 
     public partial class MainWindow : Window
     {
+        int holdeKolonne;
+        int holdeRække;
+        int række;
+        int Kolonne;
         Timer timer = new Timer();
         Button clickedButton;
         Knapper knapper = new Knapper();
@@ -58,8 +62,10 @@ namespace Mineryder
         }
         private void buttonClickHandler(object sender, RoutedEventArgs e)
         {
+            
             clickedButton = sender as Button;
             CheckIfBombHit(clickedButton);
+            CheckNeighborsForBombs(række, Kolonne);
             reveal(sender);
         }
 
@@ -84,11 +90,11 @@ namespace Mineryder
         public void CheckIfBombHit(Button button)
         {
 
-            int row = Grid.GetRow(button);
+             række = Grid.GetRow(button);
 
-            int col = Grid.GetColumn(button);
+             Kolonne = Grid.GetColumn(button);
 
-            if (gameBoard[row, col] == 10)
+            if (gameBoard[række, Kolonne] == 10)
             {
                 MessageBox.Show("BOOOOOOOOM");
                 timer.Stop();
@@ -98,7 +104,6 @@ namespace Mineryder
         public void reveal(object sender)
         {
             clickedButton = sender as Button;
-
             if (clickedButton != null)
             {
                 int række = Grid.GetRow(clickedButton);
@@ -106,6 +111,27 @@ namespace Mineryder
                 Debug.WriteLine("række: " + række + " kolonne: " + Kolonne);
             }
         }
+        public void CheckNeighborsForBombs(int række, int Kolonne)
+        {
+            int bombeTæller = 0;
+            int[] dx = { -1, -1, -1, 0, 0, 1, 1, 1 };
+            int[] dy = { -1, 0, 1, -1, 1, -1, 0, 1 };
+            
+            for (int i = 0; i < 8; i++)
+            {
+                 holdeRække = række + dx[i];
+                 holdeKolonne = Kolonne + dy[i];
+                if (holdeRække >= 0 && holdeRække < 10 && holdeKolonne >= 0 && holdeKolonne < 10)
+                {
+                    if (gameBoard[holdeRække, holdeKolonne] == 10)
+                    {
+                        bombeTæller++;
+                    }
+                }
+            }
+            
+        }
+
 
         #region Timer region
         private void UpdateTimerText(string time)
