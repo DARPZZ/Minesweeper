@@ -129,6 +129,7 @@ namespace Mineryder
                     {
                         bombeTæller++;
                     }
+
                     if(bombeTæller == 0)
                     {
                         CheckNextDoor(holdeRække, holdeKolonne);
@@ -137,6 +138,7 @@ namespace Mineryder
                     
                 }
             }
+            
             clickedButton.Content = "!X"; //bombeTæller.ToString();
             
         }
