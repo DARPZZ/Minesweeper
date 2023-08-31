@@ -110,7 +110,7 @@ namespace Mineryder
             {
                 int række = Grid.GetRow(clickedButton);
                 int Kolonne = Grid.GetColumn(clickedButton);
-                Debug.WriteLine("række: " + række + " kolonne: " + Kolonne);
+                /*Debug.WriteLine("række: " + række + " kolonne: " + Kolonne)*/;
             }
         }
         public void CheckNeighborsForBombs(int række, int Kolonne)
@@ -129,13 +129,15 @@ namespace Mineryder
                     {
                         bombeTæller++;
                     }
-                    else
+                    if(bombeTæller == 0)
                     {
                         CheckNextDoor(holdeRække, holdeKolonne);
+                        
                     }
+                    
                 }
             }
-            clickedButton.Content = bombeTæller.ToString();
+            clickedButton.Content = "!X"; //bombeTæller.ToString();
             
         }
         public void CheckNextDoor(int række, int Kolonne)
@@ -150,34 +152,48 @@ namespace Mineryder
             {
                 holdeRække = række + px[j];
                 holdeKolonne = Kolonne + py[j];
-                Debug.WriteLine("holdrække: " + holdeRække);
-                Debug.WriteLine("HoldKollnoe: " + holdeKolonne);
+                //Debug.WriteLine("holdrække: " + holdeRække);
+                //Debug.WriteLine("HoldKollnoe: " + holdeKolonne);
                 if (holdeRække >= 0 && holdeRække < 10 && holdeKolonne >= 0 && holdeKolonne < 10)
                 {
                     
                     if (gameBoard[holdeRække, holdeKolonne] == 10)
                     {
                         bombeTæller++;
-                        Debug.WriteLine("holdrække1: " + holdeRække);
-                        Debug.WriteLine("HoldKollnoe1: " + holdeKolonne);
+                        //Debug.WriteLine("holdrække1: " + holdeRække);
+                        //Debug.WriteLine("HoldKollnoe1: " + holdeKolonne);
 
                     }
 
                 }
             }
-            clickedButton.Content = bombeTæller.ToString();
-            //
             if (gameBoard[række, Kolonne] < 10)
             {
-                Debug.WriteLine("holdrække2: " + holdeRække);
-                Debug.WriteLine("HoldKollnoe2: " + holdeKolonne);
-                
+                //Debug.WriteLine("holdrække2: " + holdeRække);
+                //Debug.WriteLine("HoldKollnoe2: " + holdeKolonne);
+
                 if (buttons[række,Kolonne].Content == null)
                 {
                     
                     buttons[række, Kolonne].Content = bombeTæller;
                 }
 
+
+            }
+            if(bombeTæller == 0)
+            {
+                if (holdeRække >= 0 && holdeRække < 10 && holdeKolonne >= 0 && holdeKolonne < 10)
+                {
+                    //Debug.WriteLine("holdrække2: " + holdeRække);
+                    //Debug.WriteLine("HoldKollnoe2: " + holdeKolonne);
+                    //Debug.WriteLine("normnal: " + række);
+                    //Debug.WriteLine("normal: " + Kolonne);
+                    CheckNextDoor(holdeRække, holdeKolonne);
+                   
+                }
+               
+
+                 
             }
             
 
