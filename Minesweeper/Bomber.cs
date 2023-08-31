@@ -26,6 +26,7 @@ namespace Mineryder
 
                 if (plads[x, y] == 0)
                 {
+                    TextBox textbox = new TextBox();
                     plads[x, y] = 10;
                     bombetæller++;
                 }

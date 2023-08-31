@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Mineryder
@@ -31,6 +32,29 @@ namespace Mineryder
             GamerGrid.Children.Add(buttonGrid);
             gameBoard = new byte[10, 10];
             gameBoard = bomber.GenerateBomber(gameBoard);
+
+            /*
+             * used for debugging
+             */
+            for (int row = 0; row < 10; row++)
+            {
+                for (int col = 0; col < 10; col++)
+                {
+                    if (gameBoard[row, col] == 10)
+                    {
+                        TextBox textBox = new TextBox
+                        {
+                            Text = "Bomb",
+                            FontSize = 9,
+                           
+                        };
+
+                        buttons[row, col].Content = textBox;
+                    }
+                }
+            }
+
+
         }
         private void buttonClickHandler(object sender, RoutedEventArgs e)
         {
@@ -79,8 +103,6 @@ namespace Mineryder
             {
                 int række = Grid.GetRow(clickedButton);
                 int Kolonne = Grid.GetColumn(clickedButton);
-
-
                 Debug.WriteLine("række: " + række + " kolonne: " + Kolonne);
             }
         }
