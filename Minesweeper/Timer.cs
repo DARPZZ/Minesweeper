@@ -8,7 +8,7 @@ namespace Mineryder
 {
     public class Timer
     {
-        private DispatcherTimer dispatcherTimer;
+        DispatcherTimer dispatcherTimer;
         private int h, m, s;
         public event Action<string> TimeChanged;
 
@@ -45,8 +45,8 @@ namespace Mineryder
                 }
             }
 
-            string timeString = $"{h:D2}:{m:D2}:{s:D2}";
-            TimeChanged?.Invoke(timeString);
+            
+            TimeChanged?.Invoke($"{h:D2}:{m:D2}:{s:D2}");
 
         }
     }

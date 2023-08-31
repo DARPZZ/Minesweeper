@@ -11,6 +11,7 @@ namespace Mineryder
 
     public partial class MainWindow : Window
     {
+        Image image;
         int holdeKolonne;
         int holdeRække;
         int række;
@@ -33,6 +34,7 @@ namespace Mineryder
             timer.TimeChanged += UpdateTimerText;
             var (buttonGrid, buttonArray) = knapper.GenerateButtonGrid(10, 10, buttonClickHandler, RightButtonClickHandler);
             buttons = buttonArray;
+
             GamerGrid.Children.Add(buttonGrid);
             gameBoard = new byte[10, 10];
             gameBoard = bomber.GenerateBomber(gameBoard);
@@ -76,7 +78,7 @@ namespace Mineryder
             if (clickedButton.Tag == null || (bool)clickedButton.Tag == false)
             {
                 clickedButton.Tag = true;
-                Image image = new Image();
+                 image = new Image();
                 image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\Trophy_12.PNG"));
                 clickedButton.Content = image;
             }
@@ -127,9 +129,58 @@ namespace Mineryder
                     {
                         bombeTæller++;
                     }
+                    else
+                    {
+                        CheckNextDoor(holdeRække, holdeKolonne);
+                    }
                 }
             }
+            clickedButton.Content = bombeTæller.ToString();
             
+        }
+        public void CheckNextDoor(int række, int Kolonne)
+        {
+            Debug.WriteLine("række: " + række);
+            Debug.WriteLine("kolonne: " + Kolonne);
+            int bombeTæller = 0;
+            int[] px = { -1, -1, -1, 0, 0, 1, 1, 1 };
+            int[] py = { -1, 0, 1, -1, 1, -1, 0, 1 };
+
+            for (int j = 0; j < 8; j++)
+            {
+                holdeRække = række + px[j];
+                holdeKolonne = Kolonne + py[j];
+                Debug.WriteLine("holdrække: " + holdeRække);
+                Debug.WriteLine("HoldKollnoe: " + holdeKolonne);
+                if (holdeRække >= 0 && holdeRække < 10 && holdeKolonne >= 0 && holdeKolonne < 10)
+                {
+                    
+                    if (gameBoard[holdeRække, holdeKolonne] == 10)
+                    {
+                        bombeTæller++;
+                        Debug.WriteLine("holdrække1: " + holdeRække);
+                        Debug.WriteLine("HoldKollnoe1: " + holdeKolonne);
+
+                    }
+
+                }
+            }
+            clickedButton.Content = bombeTæller.ToString();
+            //
+            if (gameBoard[række, Kolonne] < 10)
+            {
+                Debug.WriteLine("holdrække2: " + holdeRække);
+                Debug.WriteLine("HoldKollnoe2: " + holdeKolonne);
+                
+                if (buttons[række,Kolonne].Content == null)
+                {
+                    
+                    buttons[række, Kolonne].Content = bombeTæller;
+                }
+
+            }
+            
+
         }
 
 
