@@ -68,6 +68,7 @@ namespace Mineryder
             
             clickedButton = sender as Button;
             clickedButton.IsEnabled = false;
+            
             CheckIfBombHit(clickedButton);
             CheckNeighborsForBombs(række, Kolonne);
            
@@ -125,13 +126,13 @@ namespace Mineryder
 
                     if(bombeTæller == 0)
                     {
-                        buttons[række, Kolonne].Content = "";
                         CheckNextDoor(holdeRække, holdeKolonne);
+                        buttons[række, Kolonne].Content = "";
                     }
                 }
             }
             
-            clickedButton.Content = "!X"; //bombeTæller.ToString();
+            clickedButton.Content = bombeTæller.ToString();
             
         }
         public void CheckNextDoor(int række, int Kolonne)
