@@ -112,7 +112,6 @@ namespace Mineryder
             {
                 int række = Grid.GetRow(clickedButton);
                 int Kolonne = Grid.GetColumn(clickedButton);
-                /*Debug.WriteLine("række: " + række + " kolonne: " + Kolonne)*/;
             }
         }
         public void CheckNeighborsForBombs(int række, int Kolonne)
@@ -156,26 +155,19 @@ namespace Mineryder
 
                 holdeRække = række + px[j];
                 holdeKolonne = Kolonne + py[j];
-                //Debug.WriteLine("holdrække: " + holdeRække);
-                //Debug.WriteLine("HoldKollnoe: " + holdeKolonne);
+               
                 if (holdeRække >= 0 && holdeRække < 10 && holdeKolonne >= 0 && holdeKolonne < 10)
                 {
                     
                     if (gameBoard[holdeRække, holdeKolonne] == 10)
                     {
                         bombeTæller++;
-                        //Debug.WriteLine("holdrække1: " + holdeRække);
-                        //Debug.WriteLine("HoldKollnoe1: " + holdeKolonne);
-
                     }
 
                 }
             }
             if (gameBoard[række, Kolonne] < 10)
             {
-                //Debug.WriteLine("holdrække2: " + holdeRække);
-                //Debug.WriteLine("HoldKollnoe2: " + holdeKolonne);
-
                 if (buttons[række,Kolonne].Content == null)
                 {
                     
@@ -194,7 +186,6 @@ namespace Mineryder
 
                     if (nextRække >= 0 && nextRække < 10 && nextKolonne >= 0 && nextKolonne < 10)
                     {
-
                         if (buttons[nextRække, nextKolonne].Content == null)
                         {
                             CheckNextDoor(nextRække, nextKolonne);
