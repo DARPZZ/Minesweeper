@@ -67,7 +67,7 @@ namespace Mineryder
 
             
             clickedButton = sender as Button;
-            
+            clickedButton.IsEnabled = false;
             CheckIfBombHit(clickedButton);
             CheckNeighborsForBombs(række, Kolonne);
            
@@ -125,8 +125,8 @@ namespace Mineryder
 
                     if(bombeTæller == 0)
                     {
+                        buttons[række, Kolonne].Content = "";
                         CheckNextDoor(holdeRække, holdeKolonne);
-                        
                     }
                 }
             }
@@ -136,8 +136,6 @@ namespace Mineryder
         }
         public void CheckNextDoor(int række, int Kolonne)
         {
-            Debug.WriteLine("række: " + række);
-            Debug.WriteLine("kolonne: " + Kolonne);
             int bombeTæller = 0;
             int[] px = { -1, -1, -1, 0, 0, 1, 1, 1 };
             int[] py = { -1, 0, 1, -1, 1, -1, 0, 1 };
@@ -155,7 +153,6 @@ namespace Mineryder
                     {
                         bombeTæller++;
                     }
-
                 }
             }
             if (gameBoard[række, Kolonne] < 10)
@@ -166,11 +163,10 @@ namespace Mineryder
                     buttons[række, Kolonne].Content = bombeTæller;
                     buttons[række, Kolonne].IsEnabled = false;
                 }
-
-
             }
             if (bombeTæller == 0)
             {
+                buttons[række, Kolonne].Content = "";
                 for (int l = 0; l < 8; l++)
                 {
                     int nextRække = række + px[l];
@@ -188,7 +184,6 @@ namespace Mineryder
                 }
             }
         }
-
 
         #region Timer region
         private void UpdateTidText(string time)
