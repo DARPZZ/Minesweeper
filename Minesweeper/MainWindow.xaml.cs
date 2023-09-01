@@ -31,7 +31,7 @@ namespace Mineryder
         private void StartgameButton(object sender, RoutedEventArgs e)
         {
             timer.Start();
-            timer.TimeChanged += UpdateTimerText;
+            timer.TimeChanged += UpdateTidText;
             var (buttonGrid, buttonArray) = knapper.GenerateButtonGrid(10, 10, buttonClickHandler, RightButtonClickHandler);
             buttons = buttonArray;
 
@@ -64,8 +64,10 @@ namespace Mineryder
         }
         private void buttonClickHandler(object sender, RoutedEventArgs e)
         {
+
             
             clickedButton = sender as Button;
+            
             CheckIfBombHit(clickedButton);
             CheckNeighborsForBombs(række, Kolonne);
             reveal(sender);
@@ -135,7 +137,6 @@ namespace Mineryder
                         CheckNextDoor(holdeRække, holdeKolonne);
                         
                     }
-                    
                 }
             }
             
@@ -152,6 +153,7 @@ namespace Mineryder
 
             for (int j = 0; j < 8; j++)
             {
+
                 holdeRække = række + px[j];
                 holdeKolonne = Kolonne + py[j];
                 //Debug.WriteLine("holdrække: " + holdeRække);
@@ -178,33 +180,35 @@ namespace Mineryder
                 {
                     
                     buttons[række, Kolonne].Content = bombeTæller;
+                    buttons[række, Kolonne].IsEnabled = false;
                 }
 
 
             }
             if (bombeTæller == 0)
             {
-                for (int j = 0; j < 8; j++)
+                for (int l = 0; l < 8; l++)
                 {
-                    int nextRække = række + px[j];
-                    int nextKolonne = Kolonne + py[j];
+                    int nextRække = række + px[l];
+                    int nextKolonne = Kolonne + py[l];
 
                     if (nextRække >= 0 && nextRække < 10 && nextKolonne >= 0 && nextKolonne < 10)
                     {
+
                         if (buttons[nextRække, nextKolonne].Content == null)
                         {
                             CheckNextDoor(nextRække, nextKolonne);
+
                         }
                     }
+                    
                 }
             }
-
-
         }
 
 
         #region Timer region
-        private void UpdateTimerText(string time)
+        private void UpdateTidText(string time)
         {
 
             Tid.Text = time;

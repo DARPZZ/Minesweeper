@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,12 @@ namespace Mineryder
          */
         public byte[,] GenerateBomber(byte[,] plads)
         {
-            int bombetæller = 0;
+            Random random = new Random();
 
-            while (bombetæller < 10)
+            int bombetæller = 0;
+           int randombombeber = random.Next(10, 40);
+
+            while (bombetæller < randombombeber)
             {
                 int x = random.Next(plads.GetLength(0));
                 int y = random.Next(plads.GetLength(1));
@@ -30,6 +34,7 @@ namespace Mineryder
                     bombetæller++;
                 }
             }
+            Debug.WriteLine(bombetæller + ": bombetæller");
             return plads;
         }
     }
