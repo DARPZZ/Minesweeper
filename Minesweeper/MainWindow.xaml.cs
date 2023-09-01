@@ -23,6 +23,7 @@ namespace Mineryder
         byte[,] gameBoard;
         Bomber bomber = new Bomber();
 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -66,9 +67,10 @@ namespace Mineryder
         {
             
             clickedButton = sender as Button;
+            reveal(sender);
             CheckIfBombHit(clickedButton);
             CheckNeighborsForBombs(række, Kolonne);
-            reveal(sender);
+
         }
 
         private void RightButtonClickHandler(object sender, MouseButtonEventArgs e)
@@ -110,9 +112,11 @@ namespace Mineryder
             {
                 int række = Grid.GetRow(clickedButton);
                 int Kolonne = Grid.GetColumn(clickedButton);
-                /*Debug.WriteLine("række: " + række + " kolonne: " + Kolonne)*/;
+                Debug.WriteLine("række: " + række + " kolonne: " + Kolonne);
             }
         }
+
+
         public void CheckNeighborsForBombs(int række, int Kolonne)
         {
             int bombeTæller = 0;
@@ -130,22 +134,15 @@ namespace Mineryder
                         bombeTæller++;
                     }
 
-                    if(bombeTæller == 0)
-                    {
-                        CheckNextDoor(holdeRække, holdeKolonne);
-                        
-                    }
-                    
+                        CheckNextDoor(holdeRække, holdeKolonne); 
+
                 }
             }
-            
-            clickedButton.Content = "!X"; //bombeTæller.ToString();
-            
+
+            buttons[række, Kolonne].Content = bombeTæller.ToString();
         }
         public void CheckNextDoor(int række, int Kolonne)
         {
-            Debug.WriteLine("række: " + række);
-            Debug.WriteLine("kolonne: " + Kolonne);
             int bombeTæller = 0;
             int[] px = { -1, -1, -1, 0, 0, 1, 1, 1 };
             int[] py = { -1, 0, 1, -1, 1, -1, 0, 1 };
@@ -154,35 +151,26 @@ namespace Mineryder
             {
                 holdeRække = række + px[j];
                 holdeKolonne = Kolonne + py[j];
-                //Debug.WriteLine("holdrække: " + holdeRække);
-                //Debug.WriteLine("HoldKollnoe: " + holdeKolonne);
+                Debug.WriteLine("r: " + holdeRække +" " + bombeTæller);
+                Debug.WriteLine("k: " + holdeKolonne);
                 if (holdeRække >= 0 && holdeRække < 10 && holdeKolonne >= 0 && holdeKolonne < 10)
                 {
-                    
                     if (gameBoard[holdeRække, holdeKolonne] == 10)
                     {
                         bombeTæller++;
-                        //Debug.WriteLine("holdrække1: " + holdeRække);
-                        //Debug.WriteLine("HoldKollnoe1: " + holdeKolonne);
-
                     }
-
                 }
             }
             if (gameBoard[række, Kolonne] < 10)
             {
-                //Debug.WriteLine("holdrække2: " + holdeRække);
-                //Debug.WriteLine("HoldKollnoe2: " + holdeKolonne);
-
                 if (buttons[række,Kolonne].Content == null)
                 {
-                    
                     buttons[række, Kolonne].Content = bombeTæller;
                 }
 
 
             }
-            if(bombeTæller == 0)
+            if (bombeTæller == 0)
             {
                 if (holdeRække >= 0 && holdeRække < 10 && holdeKolonne >= 0 && holdeKolonne < 10)
                 {
@@ -191,13 +179,10 @@ namespace Mineryder
                     //Debug.WriteLine("normnal: " + række);
                     //Debug.WriteLine("normal: " + Kolonne);
                     CheckNextDoor(holdeRække, holdeKolonne);
-                   
-                }
-               
 
-                 
+                }
             }
-            
+
 
         }
 
