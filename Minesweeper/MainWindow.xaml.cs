@@ -126,6 +126,7 @@ namespace Mineryder
 
                     if(bombeTæller == 0)
                     {
+
                         CheckNextDoor(holdeRække, holdeKolonne);
                         buttons[række, Kolonne].Content = "";
                     }
