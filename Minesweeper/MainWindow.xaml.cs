@@ -182,22 +182,23 @@ namespace Mineryder
 
 
             }
-            if(bombeTæller == 0)
+            if (bombeTæller == 0)
             {
-                if (holdeRække >= 0 && holdeRække < 10 && holdeKolonne >= 0 && holdeKolonne < 10)
+                for (int j = 0; j < 8; j++)
                 {
-                    //Debug.WriteLine("holdrække2: " + holdeRække);
-                    //Debug.WriteLine("HoldKollnoe2: " + holdeKolonne);
-                    //Debug.WriteLine("normnal: " + række);
-                    //Debug.WriteLine("normal: " + Kolonne);
-                    CheckNextDoor(holdeRække, holdeKolonne);
-                   
-                }
-               
+                    int nextRække = række + px[j];
+                    int nextKolonne = Kolonne + py[j];
 
-                 
+                    if (nextRække >= 0 && nextRække < 10 && nextKolonne >= 0 && nextKolonne < 10)
+                    {
+                        if (buttons[nextRække, nextKolonne].Content == null)
+                        {
+                            CheckNextDoor(nextRække, nextKolonne);
+                        }
+                    }
+                }
             }
-            
+
 
         }
 
