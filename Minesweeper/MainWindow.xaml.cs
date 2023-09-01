@@ -70,7 +70,7 @@ namespace Mineryder
             
             CheckIfBombHit(clickedButton);
             CheckNeighborsForBombs(række, Kolonne);
-            reveal(sender);
+           
         }
 
         private void RightButtonClickHandler(object sender, MouseButtonEventArgs e)
@@ -105,15 +105,7 @@ namespace Mineryder
             }
 
         }
-        public void reveal(object sender)
-        {
-            clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                int række = Grid.GetRow(clickedButton);
-                int Kolonne = Grid.GetColumn(clickedButton);
-            }
-        }
+        
         public void CheckNeighborsForBombs(int række, int Kolonne)
         {
             int bombeTæller = 0;
