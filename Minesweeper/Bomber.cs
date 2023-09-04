@@ -12,7 +12,7 @@ namespace Mineryder
     {
         public Bomber() { }
 
-        Random random = new Random();
+         Random random = new Random();
         /*
          * Generer 10 forskellige bomber der er random placeret
          */
