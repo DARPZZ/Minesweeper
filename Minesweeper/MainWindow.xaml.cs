@@ -68,15 +68,14 @@ namespace Mineryder
             
             clickedButton = sender as Button;
             clickedButton.IsEnabled = false;
-           
-
             CheckIfBombHit(clickedButton);
             CheckNeighborsForBombs(række, Kolonne);
-            CheckIfWin();
             if (clickedButton.Content == "0")
             {
                 clickedButton.Content = "";
             }
+            CheckIfWin();
+            
 
         }
 
@@ -216,6 +215,7 @@ namespace Mineryder
 
             if (IsEnebalebuttons == antalBomber)
             {
+                timer.Stop();
                 MessageBox.Show("You won! There are only bombs left. Your time was: " + Tid.Text);
             }
         }
