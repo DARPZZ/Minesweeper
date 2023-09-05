@@ -218,7 +218,6 @@ namespace Mineryder
         #region Timer region
         private void UpdateTidText(string time)
         {
-
             Tid.Text = time;
         }
         #endregion
