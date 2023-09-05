@@ -10,6 +10,14 @@ namespace Mineryder
 {
     public class Bomber
     {
+        private int bombeTæller;
+
+        public int BombeTæller
+        {
+            get { return bombeTæller; }
+            set { bombeTæller = value; }
+        }
+
         public Bomber() { }
 
          Random random = new Random();
@@ -20,10 +28,10 @@ namespace Mineryder
         {
             Random random = new Random();
 
-            int bombetæller = 0;
-           int randombombeber = random.Next(10, 40);
+            bombeTæller = 0;
+           //int randombombeber = random.Next(10, 40);
 
-            while (bombetæller < randombombeber)
+            while (bombeTæller < 5)
             {
                 int x = random.Next(plads.GetLength(0));
                 int y = random.Next(plads.GetLength(1));
@@ -31,10 +39,10 @@ namespace Mineryder
                 if (plads[x, y] == 0)
                 {
                     plads[x, y] = 10;
-                    bombetæller++;
+                    bombeTæller++;
                 }
             }
-            Debug.WriteLine(bombetæller + ": bombetæller");
+            //Debug.WriteLine(bombeTæller + ": bombetæller");
             return plads;
         }
     }

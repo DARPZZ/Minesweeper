@@ -68,10 +68,16 @@ namespace Mineryder
             
             clickedButton = sender as Button;
             clickedButton.IsEnabled = false;
-            
-            CheckIfBombHit(clickedButton);
-            CheckNeighborsForBombs(række, Kolonne);
            
+
+            CheckIfBombHit(clickedButton);
+            CheckIfWin();
+            CheckNeighborsForBombs(række, Kolonne);
+            if (clickedButton.Content == "0")
+            {
+                clickedButton.Content = "";
+            }
+
         }
 
         private void RightButtonClickHandler(object sender, MouseButtonEventArgs e)
@@ -179,13 +185,35 @@ namespace Mineryder
                         if (buttons[nextRække, nextKolonne].Content == null)
                         {
                             CheckNextDoor(nextRække, nextKolonne);
-
                         }
                     }
                     
                 }
             }
         }
+        public void CheckIfWin()
+        {
+            var IsEnebalebuttons = 0;
+            var antalBomber = bomber.BombeTæller;
+
+            for (int række = 0; række < 10; række++)
+            {
+                for (int Kolonne = 0; Kolonne < 10; Kolonne++) 
+                {
+                    if (buttons[række, Kolonne].IsEnabled)
+                    {
+                        IsEnebalebuttons++;
+
+                        if (IsEnebalebuttons !> antalBomber)
+                        {
+                            return; 
+                        }
+                    }
+                }
+            }
+            MessageBox.Show("You won! there is only bombs left. Youre time was: " + Tid.Text);
+        }
+
 
         #region Timer region
         private void UpdateTidText(string time)
