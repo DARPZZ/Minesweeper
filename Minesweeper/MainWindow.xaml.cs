@@ -71,8 +71,8 @@ namespace Mineryder
            
 
             CheckIfBombHit(clickedButton);
-            CheckIfWin();
             CheckNeighborsForBombs(række, Kolonne);
+            CheckIfWin();
             if (clickedButton.Content == "0")
             {
                 clickedButton.Content = "";
@@ -198,20 +198,26 @@ namespace Mineryder
 
             for (int række = 0; række < 10; række++)
             {
-                for (int Kolonne = 0; Kolonne < 10; Kolonne++) 
+                for (int Kolonne = 0; Kolonne < 10; Kolonne++)
                 {
-                    if (buttons[række, Kolonne].IsEnabled)
+                    if (!buttons[række, Kolonne].IsEnabled)
                     {
-                        IsEnebalebuttons++;
-
-                        if (IsEnebalebuttons !> antalBomber)
-                        {
-                            return; 
-                        }
+                        continue;
                     }
+
+                    if (gameBoard[række, Kolonne] != 10)
+                    {
+                        return;
+                    }
+
+                    IsEnebalebuttons++;
                 }
             }
-            MessageBox.Show("You won! there is only bombs left. Youre time was: " + Tid.Text);
+
+            if (IsEnebalebuttons == antalBomber)
+            {
+                MessageBox.Show("You won! There are only bombs left. Your time was: " + Tid.Text);
+            }
         }
 
 

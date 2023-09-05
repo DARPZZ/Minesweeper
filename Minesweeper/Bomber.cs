@@ -21,17 +21,14 @@ namespace Mineryder
         public Bomber() { }
 
          Random random = new Random();
-        /*
-         * Generer 10 forskellige bomber der er random placeret
-         */
         public byte[,] GenerateBomber(byte[,] plads)
         {
             Random random = new Random();
 
             bombeTæller = 0;
-           //int randombombeber = random.Next(10, 40);
+           int randombombeber = random.Next(4, 7);
 
-            while (bombeTæller < 5)
+            while (bombeTæller < 1)
             {
                 int x = random.Next(plads.GetLength(0));
                 int y = random.Next(plads.GetLength(1));
@@ -42,7 +39,7 @@ namespace Mineryder
                     bombeTæller++;
                 }
             }
-            //Debug.WriteLine(bombeTæller + ": bombetæller");
+            Debug.WriteLine(bombeTæller + ": bombetæller");
             return plads;
         }
     }
