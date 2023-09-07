@@ -96,9 +96,7 @@ namespace Mineryder
                 DisabelIfLost(image);
                 timer.Stop();
                 MessageBox.Show("BOOOOOOOOM you lost");
-
                 return true;
-                
             }
             return false;
 
