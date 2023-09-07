@@ -47,13 +47,21 @@ namespace Mineryder
         {
             clickedButton = sender as Button;
             clickedButton.IsEnabled = false;
-            CheckIfBombHit(clickedButton);
-            CheckNeighborsForBombs(række, Kolonne);
-            if (clickedButton.Content == "0")
+            
+            if(CheckIfBombHit(clickedButton))
             {
-                clickedButton.Content = "";
+                return;
+
+            }else
+            {
+                CheckNeighborsForBombs(række, Kolonne);
+                if (clickedButton.Content == "0")
+                {
+                    clickedButton.Content = "";
+                }
+                CheckIfWin();
             }
-            CheckIfWin();
+            
         }
 
         private void RightButtonClickHandler(object sender, MouseButtonEventArgs e)
@@ -74,7 +82,7 @@ namespace Mineryder
             }
         }
 
-        public void CheckIfBombHit(Button button)
+        public bool CheckIfBombHit(Button button)
         {
 
              række = Grid.GetRow(button);
@@ -86,13 +94,14 @@ namespace Mineryder
                 image = new Image();
                 image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\bombe.jpg"));
                 clickedButton.Content = image;
-                DisabelIfLost();
+                DisabelIfLost(image);
                 timer.Stop();
                 MessageBox.Show("BOOOOOOOOM you lost");
 
-              
+                return true;
                 
             }
+            return false;
 
         }
         
@@ -202,7 +211,7 @@ namespace Mineryder
                 MessageBox.Show("You won! There are only bombs left. Your time was: " + Tid.Text);
             }
         }
-        public void DisabelIfLost()
+        public void DisabelIfLost(Image image)
         {
 
             for (int række = 0; række < 10; række++)
@@ -210,6 +219,7 @@ namespace Mineryder
                 for (int Kolonne = 0; Kolonne < 10; Kolonne++)
                 {
                     buttons[række, Kolonne].IsEnabled = false;
+                    clickedButton.Content = image;
                 }
             }
         }
