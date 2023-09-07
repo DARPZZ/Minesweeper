@@ -38,7 +38,7 @@ namespace Mineryder
             GamerGrid.Children.Add(buttonGrid);
             gameBoard = new byte[10, 10];
             gameBoard = bomber.GenerateBomber(gameBoard);
-
+            //Her kan der være debugging statements for bomberne
             
 
 
@@ -63,7 +63,7 @@ namespace Mineryder
             if (clickedButton.Tag == null || (bool)clickedButton.Tag == false)
             {
                 clickedButton.Tag = true;
-                 image = new Image();
+                image = new Image();
                 image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\Trophy_12.PNG"));
                 clickedButton.Content = image;
             }
@@ -83,8 +83,15 @@ namespace Mineryder
 
             if (gameBoard[række, Kolonne] == 10)
             {
-                MessageBox.Show("BOOOOOOOOM");
+                image = new Image();
+                image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\bombe.jpg"));
+                clickedButton.Content = image;
+                DisabelIfLost();
                 timer.Stop();
+                MessageBox.Show("BOOOOOOOOM you lost");
+
+              
+                
             }
 
         }
@@ -193,6 +200,17 @@ namespace Mineryder
             {
                 timer.Stop();
                 MessageBox.Show("You won! There are only bombs left. Your time was: " + Tid.Text);
+            }
+        }
+        public void DisabelIfLost()
+        {
+
+            for (int række = 0; række < 10; række++)
+            {
+                for (int Kolonne = 0; Kolonne < 10; Kolonne++)
+                {
+                    buttons[række, Kolonne].IsEnabled = false;
+                }
             }
         }
 
