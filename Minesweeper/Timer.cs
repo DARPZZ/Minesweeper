@@ -30,6 +30,12 @@ namespace Mineryder
 
             dispatcherTimer.Stop();
         }
+        public void reset()
+        {
+            s = 0;
+            m = 0;
+            h = 0;
+        }
 
         private void OnTimerTick(object sender, EventArgs e)
         {

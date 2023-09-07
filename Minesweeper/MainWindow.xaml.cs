@@ -30,6 +30,7 @@ namespace Mineryder
 
         private void StartgameButton(object sender, RoutedEventArgs e)
         {
+            timer.reset();
             timer.Start();
             timer.TimeChanged += UpdateTidText;
             var (buttonGrid, buttonArray) = knapper.GenerateButtonGrid(10, 10, buttonClickHandler, RightButtonClickHandler);
@@ -51,7 +52,6 @@ namespace Mineryder
             if(CheckIfBombHit(clickedButton))
             {
                 return;
-
             }else
             {
                 CheckNeighborsForBombs(række, Kolonne);
@@ -90,11 +90,10 @@ namespace Mineryder
 
             if (gameBoard[række, Kolonne] == 10)
             {
-                image = new Image();
-                image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\bombe.jpg"));
-                clickedButton.Content = image;
+             
                 DisabelIfLost(image);
                 timer.Stop();
+                DisplayAlleBomber();
                 MessageBox.Show("BOOOOOOOOM you lost");
                 return true;
             }
@@ -217,6 +216,22 @@ namespace Mineryder
                 {
                     buttons[række, Kolonne].IsEnabled = false;
                     clickedButton.Content = image;
+                }
+            }
+        }
+        public void DisplayAlleBomber()
+        {
+            for (int row = 0; row < 10; row++)
+            {
+                for (int col = 0; col < 10; col++)
+                {
+                    if (gameBoard[row, col] == 10)
+                    {
+                        image = new Image();
+                        image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\bombe.jpg"));
+
+                    };
+                        buttons[row, col].Content = image;
                 }
             }
         }
