@@ -86,7 +86,6 @@ namespace Mineryder
         {
 
              række = Grid.GetRow(button);
-
              Kolonne = Grid.GetColumn(button);
 
             if (gameBoard[række, Kolonne] == 10)
