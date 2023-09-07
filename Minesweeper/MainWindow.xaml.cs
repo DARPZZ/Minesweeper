@@ -39,33 +39,12 @@ namespace Mineryder
             gameBoard = new byte[10, 10];
             gameBoard = bomber.GenerateBomber(gameBoard);
 
-            /*
-             * used for debugging
-             */
-            for (int row = 0; row < 10; row++)
-            {
-                for (int col = 0; col < 10; col++)
-                {
-                    if (gameBoard[row, col] == 10)
-                    {
-                        TextBox textBox = new TextBox
-                        {
-                            Text = "Bomb",
-                            FontSize = 9,
-                           
-                        };
-
-                        buttons[row, col].Content = textBox;
-                    }
-                }
-            }
+            
 
 
         }
         private void buttonClickHandler(object sender, RoutedEventArgs e)
         {
-
-            
             clickedButton = sender as Button;
             clickedButton.IsEnabled = false;
             CheckIfBombHit(clickedButton);
@@ -75,8 +54,6 @@ namespace Mineryder
                 clickedButton.Content = "";
             }
             CheckIfWin();
-            
-
         }
 
         private void RightButtonClickHandler(object sender, MouseButtonEventArgs e)
@@ -131,7 +108,6 @@ namespace Mineryder
 
                     if(bombeTæller == 0)
                     {
-
                         CheckNextDoor(holdeRække, holdeKolonne);
                         buttons[række, Kolonne].Content = "";
                     }
