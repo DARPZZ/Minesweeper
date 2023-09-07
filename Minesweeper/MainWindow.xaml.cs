@@ -143,7 +143,6 @@ namespace Mineryder
                
                 if (holdeRække >= 0 && holdeRække < 10 && holdeKolonne >= 0 && holdeKolonne < 10)
                 {
-                    
                     if (gameBoard[holdeRække, holdeKolonne] == 10)
                     {
                         bombeTæller++;
@@ -200,7 +199,6 @@ namespace Mineryder
                     IsEnebalebuttons++;
                 }
             }
-
             if (IsEnebalebuttons == antalBomber)
             {
                 timer.Stop();

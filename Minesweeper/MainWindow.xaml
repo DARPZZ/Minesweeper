@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="500">
     <Grid x:Name="GamerGrid" Margin="-1,0,1,0">
-        <Button Content="Start" HorizontalAlignment="Center" Margin="0,524,0,0" VerticalAlignment="Top" Height="30" Width="70" Click="StartgameButton"/>
+        <Button Content="Start" x:Name="StartKnap" HorizontalAlignment="Center" Margin="0,524,0,0" VerticalAlignment="Top" Height="30" Width="70" Click="StartgameButton"/>
         <TextBox x:Name="Tid" HorizontalAlignment="Left" Margin="295,522,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Width="200" Height="34" IsReadOnly="True" FontSize="25" FontWeight="ExtraBold" FontStretch="Medium" FontStyle="Italic" FontFamily="Bahnschrift SemiBold" HorizontalContentAlignment="Center"  />
         <Label Content="TID: " HorizontalAlignment="Left" Margin="295,515,0,0" VerticalAlignment="Top" Height="48" Width="60" FontSize="22" FontWeight="ExtraBold" RenderTransformOrigin="0.1,0.542"/>
 
