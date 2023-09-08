@@ -213,7 +213,6 @@ namespace Mineryder
                 for (int Kolonne = 0; Kolonne < 10; Kolonne++)
                 {
                     buttons[række, Kolonne].IsEnabled = false;
-                    clickedButton.Content = image;
                 }
             }
         }
@@ -227,7 +226,6 @@ namespace Mineryder
                     {
                         image = new Image();
                         image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\bombe.jpg"));
-
                     };
                         buttons[row, col].Content = image;
                 }
