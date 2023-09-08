@@ -39,11 +39,8 @@ namespace Mineryder
             GamerGrid.Children.Add(buttonGrid);
             gameBoard = new byte[10, 10];
             gameBoard = bomber.GenerateBomber(gameBoard);
-            //Her kan der være debugging statements for bomberne
-            
-
-
         }
+
         private void buttonClickHandler(object sender, RoutedEventArgs e)
         {
             clickedButton = sender as Button;

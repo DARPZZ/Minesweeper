@@ -43,6 +43,5 @@ namespace Mineryder
             }
             return (grid, buttons);
         }
-
     }
 }
