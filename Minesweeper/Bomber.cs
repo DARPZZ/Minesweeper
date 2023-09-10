@@ -20,7 +20,6 @@ namespace Mineryder
 
         public Bomber() { }
 
-         Random random = new Random();
         public byte[,] GenerateBomber(byte[,] plads)
         {
             Random random = new Random();

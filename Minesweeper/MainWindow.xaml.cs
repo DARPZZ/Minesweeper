@@ -35,7 +35,6 @@ namespace Mineryder
             timer.TimeChanged += UpdateTidText;
             var (buttonGrid, buttonArray) = knapper.GenerateButtonGrid(10, 10, buttonClickHandler, RightButtonClickHandler);
             buttons = buttonArray;
-
             GamerGrid.Children.Add(buttonGrid);
             gameBoard = new byte[10, 10];
             gameBoard = bomber.GenerateBomber(gameBoard);
@@ -81,10 +80,8 @@ namespace Mineryder
 
         public bool CheckIfBombHit(Button button)
         {
-
              række = Grid.GetRow(button);
              Kolonne = Grid.GetColumn(button);
-
             if (gameBoard[række, Kolonne] == 10)
             {
              
@@ -95,7 +92,6 @@ namespace Mineryder
                 return true;
             }
             return false;
-
         }
         
         public void CheckNeighborsForBombs(int række, int Kolonne)

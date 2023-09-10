@@ -50,7 +50,6 @@ namespace Mineryder
                     h++;
                 }
             }
-
             
             TimeChanged?.Invoke($"{h:D2}:{m:D2}:{s:D2}");
 
