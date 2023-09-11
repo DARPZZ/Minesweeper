@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Minesweeper;
+using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +12,7 @@ namespace Mineryder
 
     public partial class MainWindow : Window
     {
+        Musik gameMusik;
         Image image;
         int holdeKolonne;
         int holdeRække;
@@ -22,7 +24,7 @@ namespace Mineryder
         Button[,] buttons;
         byte[,] gameBoard;
         Bomber bomber = new Bomber();
-
+   
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +32,8 @@ namespace Mineryder
 
         private void StartgameButton(object sender, RoutedEventArgs e)
         {
+            gameMusik = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\minemusik.wav");
+            gameMusik.MusikPlayLooping();
             timer.reset();
             timer.Start();
             timer.TimeChanged += UpdateTidText;
@@ -88,6 +92,9 @@ namespace Mineryder
                 DisabelIfLost(image);
                 timer.Stop();
                 DisplayAlleBomber();
+                gameMusik.MusikStop();
+                Musik bombSound = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\Explosion Sound Effect.wav");
+                bombSound.MusikPlay();
                 MessageBox.Show("BOOOOOOOOM you lost");
                 return true;
             }
@@ -195,6 +202,7 @@ namespace Mineryder
             if (IsEnebalebuttons == antalBomber)
             {
                 timer.Stop();
+                gameMusik.MusikStop();
                 MessageBox.Show("You won! There are only bombs left. Your time was: " + Tid.Text);
             }
         }
