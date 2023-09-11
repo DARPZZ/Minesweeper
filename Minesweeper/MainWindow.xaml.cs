@@ -33,6 +33,7 @@ namespace Mineryder
         private void StartgameButton(object sender, RoutedEventArgs e)
         {
             gameMusik = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\minemusik.wav");
+            gameMusik.SetVolume(75);
             gameMusik.MusikPlayLooping();
             timer.reset();
             timer.Start();
@@ -73,6 +74,8 @@ namespace Mineryder
                 clickedButton.Tag = true;
                 image = new Image();
                 image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\Trophy_12.PNG"));
+                Musik flagSat = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\Mouse Click Sound Effect.wav");
+                flagSat.MusikPlay();
                 clickedButton.Content = image;
             }
             else
@@ -203,6 +206,8 @@ namespace Mineryder
             {
                 timer.Stop();
                 gameMusik.MusikStop();
+                Musik winMusik = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\Win sound effect no copyright.wav");
+                winMusik.MusikPlay();
                 MessageBox.Show("You won! There are only bombs left. Your time was: " + Tid.Text);
             }
         }

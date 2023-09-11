@@ -1,54 +1,66 @@
 ﻿using System;
 using System.Media;
+using System.Windows.Media;
+
 
 namespace Minesweeper
-{
-    public class Musik
     {
-        private SoundPlayer soundPlayer = new SoundPlayer();
+        public class Musik
+        {
+            private MediaPlayer mediaPlayer = new MediaPlayer();
 
-        public Musik(string path)
-        {
-            try
+            public Musik(string path)
             {
-                soundPlayer.SoundLocation = path;
-                soundPlayer.Load();
+                try
+                {
+                    mediaPlayer.Open(new Uri(path));
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error loading sound: {e.Message}");
+                }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Error loading sound: {e.Message}");
-            }
-        }
 
-        public void MusikPlay()
-        {
-            try
+            public void MusikPlay()
             {
-                soundPlayer.Play();
+                try
+                {
+                    mediaPlayer.Play();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error playing sound: {e.Message}");
+                }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Error playing sound: {e.Message}");
-            }
-        }
-        public void MusikPlayLooping()
-        {
-            try { 
-                soundPlayer.PlayLooping();
-            }
-            catch (Exception e) { }
-        }
 
-        public void MusikStop()
-        {
-            try
+            public void MusikPlayLooping()
             {
-                soundPlayer.Stop();
+                try
+                {
+                    mediaPlayer.MediaEnded += (sender, e) => mediaPlayer.Position = TimeSpan.Zero;
+                    mediaPlayer.Play();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error playing sound: {e.Message}");
+                }
             }
-            catch (Exception e)
+
+            public void MusikStop()
             {
-                Console.WriteLine($"Error stopping sound: {e.Message}");
+                try
+                {
+                    mediaPlayer.Stop();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error stopping sound: {e.Message}");
+                }
             }
-        }
+            public void SetVolume(int volume)
+            {
+                mediaPlayer.Volume = volume / 100.0f;
+            }
     }
+   
 }
