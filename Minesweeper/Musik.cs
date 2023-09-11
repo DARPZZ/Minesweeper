@@ -14,9 +14,9 @@ namespace Minesweeper
                 soundPlayer.SoundLocation = path;
                 soundPlayer.Load();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine($"Error loading sound: {ex.Message}");
+                Console.WriteLine($"Error loading sound: {e.Message}");
             }
         }
 
@@ -45,9 +45,9 @@ namespace Minesweeper
             {
                 soundPlayer.Stop();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine($"Error stopping sound: {ex.Message}");
+                Console.WriteLine($"Error stopping sound: {e.Message}");
             }
         }
     }
