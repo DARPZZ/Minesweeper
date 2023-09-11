@@ -49,12 +49,19 @@ namespace Mineryder
         {
             clickedButton = sender as Button;
             clickedButton.IsEnabled = false;
-            
-            if(CheckIfBombHit(clickedButton))
+
+            if (CheckIfBombHit(clickedButton))
             {
                 return;
-            }else
+            }
+            else
             {
+                
+                if (clickedButton.Content is Image)
+                {
+                    return;
+                }
+
                 CheckNeighborsForBombs(række, Kolonne);
                 if (clickedButton.Content == "0")
                 {
@@ -62,8 +69,8 @@ namespace Mineryder
                 }
                 CheckIfWin();
             }
-            
         }
+
 
         private void RightButtonClickHandler(object sender, MouseButtonEventArgs e)
         {
@@ -232,8 +239,9 @@ namespace Mineryder
                     {
                         image = new Image();
                         image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\bombe.jpg"));
+                         buttons[row, col].Content = image;
                     };
-                        buttons[row, col].Content = image;
+                       
                 }
             }
         }
