@@ -33,7 +33,7 @@ namespace Mineryder
         private void StartgameButton(object sender, RoutedEventArgs e)
         {
             gameMusik = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\minemusik.wav");
-            gameMusik.SetVolume(75);
+            gameMusik.SetVolume(100);
             gameMusik.MusikPlayLooping();
             timer.reset();
             timer.Start();
