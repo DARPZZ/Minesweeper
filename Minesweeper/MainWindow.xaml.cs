@@ -203,6 +203,7 @@ namespace Mineryder
 
                     if (gameBoard[række, Kolonne] != 10)
                     {
+                        
                         return;
                     }
 
