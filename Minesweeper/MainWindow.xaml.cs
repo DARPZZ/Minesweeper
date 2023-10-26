@@ -80,7 +80,7 @@ namespace Mineryder
             {
                 clickedButton.Tag = true;
                 image = new Image();
-                image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\Trophy_12.PNG"));
+                image.Source = new BitmapImage(new Uri("/Billeder/flag.png", UriKind.Relative));
                 Musik flagSat = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\Mouse Click Sound Effect.wav");
                 flagSat.MusikPlay();
                 clickedButton.Content = image;
@@ -238,8 +238,8 @@ namespace Mineryder
                     if (gameBoard[row, col] == 10)
                     {
                         image = new Image();
-                        image.Source = new BitmapImage(new Uri("C:\\Users\\Rasmus T. Hermansen\\Downloads\\bombe.jpg"));
-                         buttons[row, col].Content = image;
+                        image.Source = new BitmapImage(new Uri("/Billeder/bombe.jpg", UriKind.Relative));
+                        buttons[row, col].Content = image;
                     };
                        
                 }

@@ -7,4 +7,17 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Billeder\bombe.jpg" />
+    <None Remove="Billeder\flag.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Billeder\flag.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Billeder\bombe.jpg" />
+  </ItemGroup>
+
 </Project>
