@@ -1,4 +1,5 @@
 ﻿using Minesweeper;
+using Minesweeper.WinScene;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -27,6 +28,7 @@ namespace Mineryder
    
         public MainWindow()
         {
+            ((App)App.Current).ContentControlRef = this;
             InitializeComponent();
         }
 
@@ -98,7 +100,7 @@ namespace Mineryder
              Kolonne = Grid.GetColumn(button);
             if (gameBoard[række, Kolonne] == 10)
             {
-             
+                
                 DisabelIfLost(image);
                 timer.Stop();
                 DisplayAlleBomber();
@@ -216,6 +218,7 @@ namespace Mineryder
                 gameMusik.MusikStop();
                 Musik winMusik = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\Win sound effect no copyright.wav");
                 winMusik.MusikPlay();
+                ((App)App.Current).ChangeUserControl(typeof(Winner));
                 MessageBox.Show("You won! There are only bombs left. Your time was: " + Tid.Text);
             }
         }
