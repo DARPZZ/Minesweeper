@@ -70,7 +70,12 @@ namespace Mineryder
                 CheckIfWin();
             }
         }
-
+        private void SwitchToAnotherView()
+        {
+            var anotherView = new WinView();
+            anotherView.Show();
+            this.Close();
+        }
 
         private void RightButtonClickHandler(object sender, MouseButtonEventArgs e)
         {
@@ -103,9 +108,11 @@ namespace Mineryder
                 timer.Stop();
                 DisplayAlleBomber();
                 gameMusik.MusikStop();
+                
                 Musik bombSound = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\Explosion Sound Effect.wav");
+                SwitchToAnotherView();
                 bombSound.MusikPlay();
-                MessageBox.Show("BOOOOOOOOM you lost");
+              
                 return true;
             }
             return false;

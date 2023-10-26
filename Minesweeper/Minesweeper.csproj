@@ -10,6 +10,12 @@
   <ItemGroup>
     <None Remove="Billeder\bombe.jpg" />
     <None Remove="Billeder\flag.png" />
+    <None Remove="Billeder\giphy.gif" />
+    <None Remove="giphy.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +24,8 @@
 
   <ItemGroup>
     <Resource Include="Billeder\bombe.jpg" />
+    <Resource Include="Billeder\giphy.gif" />
+    <Resource Include="giphy.gif" />
   </ItemGroup>
 
 </Project>
