@@ -110,7 +110,7 @@ namespace Mineryder
                 gameMusik.MusikStop();
                 
                 Musik bombSound = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\Explosion Sound Effect.wav");
-                SwitchToAnotherView();
+               
                 bombSound.MusikPlay();
               
                 return true;
@@ -223,6 +223,7 @@ namespace Mineryder
                 gameMusik.MusikStop();
                 Musik winMusik = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\Win sound effect no copyright.wav");
                 winMusik.MusikPlay();
+                SwitchToAnotherView();
                 MessageBox.Show("You won! There are only bombs left. Your time was: " + Tid.Text);
             }
         }
