@@ -5,12 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Minesweeper" 
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="WinView">
-    <Grid>
-        <MediaElement Name="gifMediaElement" Source="C:\Users\rasmu\Downloads\giphy.gif" UnloadedBehavior="Manual" MediaEnded="playAgain"/>
+      Title="WinView"
+      Height="600" Width="700">
+    <Grid Margin="10,74,0,-6">
+        <MediaElement VerticalAlignment="Top" Name="gifMediaElement" Source="C:\Users\rasmu\Downloads\giphy.gif" UnloadedBehavior="Manual" MediaEnded="playAgain" Canvas.Left="174" Canvas.Top="10" Margin="70,210,70,0" Height="212"/>
 
-
-        <Button Name="hej" Content="Try again" Click="hej_Click" Margin="10,373,10,0"/>
+        <MediaElement Name="ko" UnloadedBehavior="Manual" Margin="321,35,44,337"></MediaElement>
+        <Button Name="hej"  Content="Try again" Click="hej_Click" Canvas.Left="10" Canvas.Top="373" Margin="10,427,35,10"/>
+        <Label Content="You won the game" Margin="180,-67,136,500" FontSize="25" FontWeight="Bold"  Width="374"/>
     </Grid>
 </Window>

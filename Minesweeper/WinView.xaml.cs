@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,12 +26,12 @@ namespace Minesweeper
         public WinView()
         {
             InitializeComponent();
-           
+
            
         }
         private void SwitchToMainView()
         {
-            
+
             var mainView = new MainWindow();
             mainView.Show();
             this.Close();
@@ -40,14 +41,28 @@ namespace Minesweeper
         {
             SwitchToMainView();
         }
-
-  
-
+        private string gifsFolderPath = "C:\\Users\\rasmu\\source\\repos\\Minesweeper\\Minesweeper\\FunnyGifs\\";
+        Random random = new Random();
         private void playAgain(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Jeg er her");
+
+
+            string[] gifFiles = Directory.GetFiles(gifsFolderPath, "*.gif");
+
+            if (gifFiles.Length > 0)
+            {
+                
+                int randomIndex = random.Next(0, gifFiles.Length);
+                string selectedGifFile = gifFiles[randomIndex];
+                ko.Source = new Uri(selectedGifFile);
+            }
+            ko.Position = TimeSpan.FromMilliseconds(1);
             gifMediaElement.Position = TimeSpan.FromMilliseconds(1);
             gifMediaElement.Play();
+            ko.Play();
+
         }
     }
 }
+
+
