@@ -26,8 +26,9 @@ namespace Minesweeper
         public WinView()
         {
             InitializeComponent();
+            RunItThough();
 
-           
+
         }
         private void SwitchToMainView()
         {
@@ -45,22 +46,27 @@ namespace Minesweeper
         Random random = new Random();
         private void playAgain(object sender, RoutedEventArgs e)
         {
-
-
+            
+            ko.Position = TimeSpan.FromMilliseconds(1);
+            gifMediaElement.Position = TimeSpan.FromMilliseconds(1);
+            gifMediaElement.Play();
+            ko.Play();
+            
+        }
+        private void RunItThough()
+        {
+            ko.MinHeight = 200;
+            ko.MinWidth = 200;
             string[] gifFiles = Directory.GetFiles(gifsFolderPath, "*.gif");
 
             if (gifFiles.Length > 0)
             {
+                int fileCount = Directory.GetFiles(gifsFolderPath, "*.*", SearchOption.AllDirectories).Length;
                 
                 int randomIndex = random.Next(0, gifFiles.Length);
                 string selectedGifFile = gifFiles[randomIndex];
                 ko.Source = new Uri(selectedGifFile);
             }
-            ko.Position = TimeSpan.FromMilliseconds(1);
-            gifMediaElement.Position = TimeSpan.FromMilliseconds(1);
-            gifMediaElement.Play();
-            ko.Play();
-
         }
     }
 }

@@ -8,10 +8,23 @@
       Title="WinView"
       Height="600" Width="700">
     <Grid Margin="10,74,0,-6">
-        <MediaElement VerticalAlignment="Top" Name="gifMediaElement" Source="C:\Users\rasmu\Downloads\giphy.gif" UnloadedBehavior="Manual" MediaEnded="playAgain" Canvas.Left="174" Canvas.Top="10" Margin="70,210,70,0" Height="212"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="127*"/>
+            <ColumnDefinition Width="103*"/>
+        </Grid.ColumnDefinitions>
+        <MediaElement VerticalAlignment="Top" Name="gifMediaElement" Source="C:\Users\rasmu\source\repos\Minesweeper\Minesweeper\Billeder\giphy.gif" UnloadedBehavior="Manual" MediaEnded="playAgain" Margin="70,210,70,0" Height="212" Grid.ColumnSpan="2"/>
 
-        <MediaElement Name="ko" UnloadedBehavior="Manual" Margin="321,35,44,337"></MediaElement>
-        <Button Name="hej"  Content="Try again" Click="hej_Click" Canvas.Left="10" Canvas.Top="373" Margin="10,427,35,10"/>
-        <Label Content="You won the game" Margin="180,-67,136,500" FontSize="25" FontWeight="Bold"  Width="374"/>
+        <MediaElement Name="ko" UnloadedBehavior="Manual" Margin="375,0,-56,296" MediaEnded="playAgain" Height="176" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+            <MediaElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="21.476"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </MediaElement.RenderTransform>
+        </MediaElement>
+        <Button Name="hej" FontSize="30" FontWeight="ExtraBold"  Content="Try again" Click="hej_Click" Margin="10,427,35,10" Grid.ColumnSpan="2"/>
+        <Label Content="You won the game" Margin="180,-67,136,500" FontSize="30" FontWeight="Bold"  Width="374" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

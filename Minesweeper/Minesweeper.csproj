@@ -11,7 +11,7 @@
     <None Remove="Billeder\bombe.jpg" />
     <None Remove="Billeder\flag.png" />
     <None Remove="Billeder\giphy.gif" />
-    <None Remove="giphy.gif" />
+    <None Remove="FunnyGifs\4j.gif" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,7 +25,7 @@
   <ItemGroup>
     <Resource Include="Billeder\bombe.jpg" />
     <Resource Include="Billeder\giphy.gif" />
-    <Resource Include="giphy.gif" />
+    <Resource Include="FunnyGifs\4j.gif" />
   </ItemGroup>
 
 </Project>
