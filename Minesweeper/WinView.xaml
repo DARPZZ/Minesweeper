@@ -13,13 +13,23 @@
             <ColumnDefinition Width="103*"/>
         </Grid.ColumnDefinitions>
         <MediaElement VerticalAlignment="Top" Name="gifMediaElement" Source="C:\Users\rasmu\source\repos\Minesweeper\Minesweeper\Billeder\giphy.gif" UnloadedBehavior="Manual" MediaEnded="playAgain" Margin="70,210,70,0" Height="212" Grid.ColumnSpan="2"/>
-
         <MediaElement Name="ko" UnloadedBehavior="Manual" Margin="375,0,-56,296" MediaEnded="playAgain" Height="176" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+            
             <MediaElement.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform Angle="21.476"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </MediaElement.RenderTransform>
+        </MediaElement>
+        <MediaElement Name="hest" Margin="0,16,135,328" UnloadedBehavior="Manual"  MediaEnded="playAgain"  RenderTransformOrigin="0.5,0.5">
+            <MediaElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-33.282"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </MediaElement.RenderTransform>

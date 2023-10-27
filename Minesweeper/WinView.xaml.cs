@@ -48,9 +48,11 @@ namespace Minesweeper
         {
             
             ko.Position = TimeSpan.FromMilliseconds(1);
+            hest.Position = TimeSpan.FromMilliseconds(1);
             gifMediaElement.Position = TimeSpan.FromMilliseconds(1);
             gifMediaElement.Play();
             ko.Play();
+            hest.Play();
             
         }
         private void RunItThough()
@@ -63,9 +65,11 @@ namespace Minesweeper
             {
                 int fileCount = Directory.GetFiles(gifsFolderPath, "*.*", SearchOption.AllDirectories).Length;
                 
-                int randomIndex = random.Next(0, gifFiles.Length);
-                string selectedGifFile = gifFiles[randomIndex];
+                int randomIndex1 = random.Next(0, gifFiles.Length);
+                int randomIndex2 = random.Next(0, gifFiles.Length);
+                string selectedGifFile = gifFiles[randomIndex1];
                 ko.Source = new Uri(selectedGifFile);
+                hest.Source = new Uri(gifFiles[randomIndex2]);
             }
         }
     }
