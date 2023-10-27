@@ -13,5 +13,7 @@ namespace Minesweeper
     /// </summary>
     public partial class App : Application
     {
+        public static Share SharedData { get; } = new Share();
     }
+
 }

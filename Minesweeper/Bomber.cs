@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Minesweeper;
 
 namespace Mineryder
 {
     public class Bomber
     {
         private int bombeTæller;
-
+        public int AntalBomber { get; set; }
         public int BombeTæller
         {
             get { return bombeTæller; }
@@ -22,11 +23,12 @@ namespace Mineryder
 
         public byte[,] GenerateBomber(byte[,] plads)
         {
+            
             Random random = new Random();
             bombeTæller = 0;
            int randombombeber = random.Next(10, 25);
-
-            while (bombeTæller < randombombeber)
+            
+            while (bombeTæller < App.SharedData.AntalBomber )
             {
                 int x = random.Next(plads.GetLength(0));
                 int y = random.Next(plads.GetLength(1));
