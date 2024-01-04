@@ -28,7 +28,7 @@ namespace Mineryder
             bombeTæller = 0;
            int randombombeber = random.Next(10, 25);
             
-            while (bombeTæller < App.SharedData.AntalBomber )
+            while (bombeTæller < randombombeber)
             {
                 int x = random.Next(plads.GetLength(0));
                 int y = random.Next(plads.GetLength(1));

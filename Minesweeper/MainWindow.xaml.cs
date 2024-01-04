@@ -32,8 +32,8 @@ namespace Mineryder
 
         private void StartgameButton(object sender, RoutedEventArgs e)
         {
-            gameMusik = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\minemusik.wav");
-            gameMusik.SetVolume(100);
+            gameMusik = new Musik(@"Music\LoneWarrior.wav");
+            gameMusik.SetVolume(0);
             gameMusik.MusikPlayLooping();
             timer.reset();
             timer.Start();
@@ -83,11 +83,12 @@ namespace Mineryder
 
             if (clickedButton.Tag == null || (bool)clickedButton.Tag == false)
             {
+                Musik flagSat = new Musik(@"Music\FlagPlaced.wav");
+                flagSat.MusikPlay();
                 clickedButton.Tag = true;
                 image = new Image();
                 image.Source = new BitmapImage(new Uri("/Billeder/flag.png", UriKind.Relative));
-                Musik flagSat = new Musik(@"C:\Users\Rasmus T. Hermansen\Downloads\Mouse Click Sound Effect.wav");
-                flagSat.MusikPlay();
+                
                 clickedButton.Content = image;
             }
             else

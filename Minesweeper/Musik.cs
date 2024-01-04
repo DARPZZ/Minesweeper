@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Media;
 using System.Windows.Media;
 
@@ -9,19 +10,24 @@ namespace Minesweeper
         {
             private MediaPlayer mediaPlayer = new MediaPlayer();
 
-            public Musik(string path)
+        public Musik(string relativePath)
+        {
+            try
             {
-                try
-                {
-                    mediaPlayer.Open(new Uri(path));
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine($"Error loading sound: {e.Message}");
-                }
+                string projectPath = System.IO.Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+                string fullPath = System.IO.Path.Combine(projectPath, relativePath);
+                Debug.WriteLine($"Loading sound from: {fullPath}");
+                mediaPlayer.Open(new Uri(fullPath));
             }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error loading sound: {e.Message}");
+            }
+        }
 
-            public void MusikPlay()
+
+
+        public void MusikPlay()
             {
                 try
                 {
@@ -29,7 +35,7 @@ namespace Minesweeper
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error playing sound: {e.Message}");
+                Debug.WriteLine($"Error playing sound: {e.Message}");
                 }
             }
 
@@ -42,7 +48,7 @@ namespace Minesweeper
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error playing sound: {e.Message}");
+                Debug.WriteLine($"Error playing sound: {e.Message}");
                 }
             }
 
@@ -54,7 +60,7 @@ namespace Minesweeper
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error stopping sound: {e.Message}");
+                Debug.WriteLine($"Error stopping sound: {e.Message}");
                 }
             }
             public void SetVolume(int volume)
